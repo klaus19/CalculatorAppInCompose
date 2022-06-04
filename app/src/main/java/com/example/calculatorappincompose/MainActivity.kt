@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                Text(text = "Hello Again")
+                TopHeader()
             }
 
         }
@@ -47,7 +47,7 @@ fun MyApp(content: @Composable () -> Unit){
 
 @Preview
 @Composable
-fun TopHeader(totalPerPerson:Double = 0.0){
+fun TopHeader(totalPerPerson:Double = 134.00){
     Surface(modifier = Modifier
         .fillMaxWidth()
         .height(150.dp)
@@ -61,10 +61,11 @@ fun TopHeader(totalPerPerson:Double = 0.0){
             verticalArrangement = Arrangement.Center
 
         ) {
+            val total = "%.2f".format(totalPerPerson)
             Text(text = "Total Per Person",
             style =MaterialTheme.typography.h5
             )
-            Text(text = "$totalPerPerson",
+            Text(text = "$$total",
             style = MaterialTheme.typography.h4,
             fontWeight = FontWeight.ExtraBold)
         }
@@ -72,6 +73,22 @@ fun TopHeader(totalPerPerson:Double = 0.0){
     }
 
 }
+
+
+@Preview
+@Composable
+fun MainContent(){
+      Surface(modifier = Modifier) {
+
+      }
+
+
+}
+
+
+
+
+
 
 
 @Preview(showBackground = true)
