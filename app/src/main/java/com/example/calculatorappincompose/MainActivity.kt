@@ -28,10 +28,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp {
-                TopHeader()
-                MainContent()
-            }
+             MyApp {
+                 TopHeader()
+             }
 
         }
     }
@@ -39,63 +38,52 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp(content: @Composable () -> Unit){
-    CalculatorAppInComposeTheme {
-            Surface(color = MaterialTheme.colors.background) {
-                 content()
 
+        CalculatorAppInComposeTheme {
+            Surface(color = MaterialTheme.colors.background){
+                content()
+            }
         }
+
     }
-}
+
 
 @Preview
 @Composable
-fun TopHeader(totalPerPerson:Double = 134.00){
+fun TopHeader(totalPerPerson:Double=134.0){
+
     Surface(modifier = Modifier
         .fillMaxWidth()
         .height(150.dp)
-        .clip(shape = CircleShape.copy(all = CornerSize(12.dp))),
-         color = Color(0xFFE9D7F7)
-       // .clip(shape = RoundedCornerShape(corner = CornerSize(12.dp)))
-    ) {
-        Column(
-            modifier = Modifier.padding(12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-
-        ) {
-            val total = "%.2f".format(totalPerPerson)
-            Text(text = "Total Per Person",
-            style =MaterialTheme.typography.h5
+        .padding(top = 10.dp)
+        .clip(
+            shape = CircleShape.copy(
+                all = CornerSize(12.dp)
             )
-            Text(text = "$$total",
-            style = MaterialTheme.typography.h4,
-            fontWeight = FontWeight.ExtraBold)
-        }
-
+        ),
+        color = Color(0xFF546DC5)
+      //  .clip(shape = RoundedCornerShape(corner = CornerSize(12.dp))))
+    )  {
+      Column(
+          modifier=Modifier.padding(12.dp),
+          horizontalAlignment = Alignment.CenterHorizontally,
+          verticalArrangement = Arrangement.Center
+      ) {
+          val total = "%2f".format(totalPerPerson)
+          Text(text = "Total Per Person",
+              style = MaterialTheme.typography.h5
+          )
+          Text(text = "$$total",
+          style = MaterialTheme.typography.h4,
+          fontWeight = FontWeight.ExtraBold)
+      }    
     }
-
 }
 
 
-@Preview
+
 @Composable
 fun MainContent(){
-      Surface(modifier = Modifier
-          .padding(2.dp)
-          .fillMaxWidth(),
-
-           shape = RoundedCornerShape(corner = CornerSize(8.dp)) ,
-           border = BorderStroke(width = 2.dp,color = Color.LightGray)
-
-          ) {
-          Column() {
-              Text(text = "Hello Again...")
-
-              Text(text = "Hello Again...")
-              Text(text = "Hello Again...")
-          }
-
-      }
 
 
 }
@@ -111,7 +99,7 @@ fun MainContent(){
 fun DefaultPreview() {
     CalculatorAppInComposeTheme {
            MyApp {
-               Text(text = "Hello Again")
+               TopHeader()
            }
     }
 }
