@@ -48,7 +48,7 @@ fun MyApp(content: @Composable () -> Unit){
     }
 
 
-@Preview
+
 @Composable
 fun TopHeader(totalPerPerson:Double=134.0){
 
@@ -81,10 +81,20 @@ fun TopHeader(totalPerPerson:Double=134.0){
 }
 
 
-
+@Preview
 @Composable
 fun MainContent(){
-
+   Surface(
+       modifier = Modifier
+           .padding(2.dp)
+           .fillMaxWidth(),
+         shape = RoundedCornerShape(corner = CornerSize(8.dp)),
+         border = BorderStroke(width = 1.dp,color=Color.LightGray)
+         ) {
+        Column() {
+            Text(text = "Hello")
+        }
+   }
 
 }
 
