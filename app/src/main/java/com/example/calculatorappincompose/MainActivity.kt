@@ -35,7 +35,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
              MyApp {
-                 TopHeader()
+                // TopHeader()
+                 MainContent()
              }
 
         }
